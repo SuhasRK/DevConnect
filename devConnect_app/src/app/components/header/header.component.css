@@ -1,0 +1,19 @@
+.iconClass {
+    color: white;
+    font-size: xx-large;
+}
+
+.searchTextField{
+    width: 30%;
+}
+
+.searchTextField input {
+    background-color: #111827;
+    border: 0.1px solid white;
+    color: white;
+
+}
+
+.searchIcon{
+    color: white;
+}
