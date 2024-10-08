@@ -1,29 +1,4 @@
 require('dotenv').config();
-
-// const express = require("express");
-// const mongoose = require('mongoose');
-// const mongoString = process.env.DATABASE_URL;
-// // console.log("URL:",process.env.DATABASE_URL);
-// const user = require('./models/userModel')
-// mongoose.connect(mongoString);
-// const database = mongoose.connection;
-// database.on('error', (error) => {
-//     console.log('Error: ', error)
-// })
-
-// database.once('connected', () => {
-//     console.log('Database Connected');
-// })
-
-// const app = express();
-
-// // app.post("/signup", (req, res) => {
-// //     console.log(req.body)
-// //     res.send("Hello World");
-// // });
-
-// app.listen(3000,() => console.log("Server listening at port 3000"));
-
 const mongoose = require('mongoose');
 const express = require('express');
 const userModel = require('./models/userModel');
