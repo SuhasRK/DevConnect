@@ -1,0 +1,14 @@
+.loginForm{
+    margin-top: 10%;
+}
+
+.topHeading {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+
+.iconClass{
+    font-size: 2rem;
+    margin-right: 1rem;
+}
