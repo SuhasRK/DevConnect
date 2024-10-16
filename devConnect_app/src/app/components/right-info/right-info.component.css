@@ -1,0 +1,33 @@
+.parent {
+    background-color: #111827;
+    height: 100%;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    text-align: center;
+}
+
+.dataBox { 
+    margin-top: 2%;
+    margin-left: 2%;
+    margin-right: 2%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dataBox div {
+    border: 1px solid grey;
+    color: white;
+    padding: 2%;
+    margin: 2%;
+    color: grey;
+    cursor: pointer;
+}
+
+.dataBox div:hover {
+    color: black;
+}
+
+.trendingTopics {
+    margin-top: 10%;
+}

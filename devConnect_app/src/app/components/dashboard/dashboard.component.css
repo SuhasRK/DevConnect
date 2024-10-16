@@ -1,12 +1,13 @@
 .sideNavClass{
-    width: 15%;
+    width: 25%;
 }
 
 .mainCompClass {
     width: 70%;
-    border: 1px solid black;
+    background-color: #111827;
+
 }
 
 .rightInfoClass{
-    width: 15%;
+    width: 25%;
 }

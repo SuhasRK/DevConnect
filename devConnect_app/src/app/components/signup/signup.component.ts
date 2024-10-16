@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { FormControl,FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserServiceService } from '../../services/user-service.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent {
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router,private userService : UserServiceService) {
     // This service can now make HTTP requests via `this.http`.
   }
 
@@ -30,11 +30,6 @@ export class SignupComponent {
   })
 
   onSubmit(){
-    this.http.post(environment.backendURL + '/saveUser',this.signupForm.value).subscribe((res : any)=>{
-      if (res.status === "success") {
-        this.router.navigate(['/login']);
-      }
-    });
-    // console.log(this.signupForm.value);
+    this.userService.addUser(this.signupForm.value);
   }
 }
