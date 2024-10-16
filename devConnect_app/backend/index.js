@@ -1,10 +1,13 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
-const userModel = require('./models/userModel');
 const app = express();
 const bodyParser = require('body-parser');
 var cors = require('cors')
+
+const userRoutes  = require('./routes/userRoutes');
+const authRoutes = require('./routes/auth');
+const postRoutes = require('./routes/postRoutes');
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -21,29 +24,8 @@ mongoose.connect(URL).then(()=>{
 .catch((err)=>{
     console.log('No connection',err);
 })
-
-// SAVE USER
-app.post("/saveUser",async (req,res)=>{
-    var user = new userModel;
-    user.firstName = req.body.firstName;
-    user.lastName = req.body.lastName? req.body.lastName : "";
-    user.email = req.body.email;
-    user.userName = req.body.userName;
-    user.password = req.body.password;
-    await user.save().then(()=>{
-        res.status(200).send({"status" : "success"});
-    }).catch((err)=>{
-        res.status(500).send({"message" : err});
-    });
-})
-
-//GET USER BY EMAIL
-app.get('/getUser/:email',async(req,res)=>{
-    var userEmail = req.params.email;
-    const result = await userModel.find({"email" : userEmail});
-    res.status(200).send(result);
-})
-
-
+app.use('/auth',authRoutes);
+app.use('/users',userRoutes);
+app.use('/posts',postRoutes)
 
 app.listen(3000,() => console.log("Server listening at port 3000"));
