@@ -23,7 +23,7 @@ export class UserServiceService {
   }
 
   findUserByEmail(email : string,password : string) {
-      this.http.get(environment.backendURL + '/getUser/' + email).subscribe((res : any)=>{
+      this.http.get(environment.backendURL + '/users/getUser/' + email).subscribe((res : any)=>{
         if(res.length){
           if(res[0].password === password) {
             localStorage.setItem('token',res[0].userName);

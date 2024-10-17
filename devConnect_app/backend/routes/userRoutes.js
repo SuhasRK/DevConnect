@@ -19,7 +19,7 @@ router.post("/saveUser",authenticate,async (req,res)=>{
 })
 
 //GET USER BY EMAIL
-router.get('/getUser/:email',authenticate,async(req,res)=>{
+router.get('/getUser/:email',async(req,res)=>{
     var userEmail = req.params.email;
     const result = await userModel.find({"email" : userEmail});
     res.status(200).send(result);
