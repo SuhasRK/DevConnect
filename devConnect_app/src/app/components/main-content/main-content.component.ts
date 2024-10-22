@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { environment } from '../../environments/firebase-config';
-
 @Component({
   selector: 'app-main-content',
   standalone: true,
