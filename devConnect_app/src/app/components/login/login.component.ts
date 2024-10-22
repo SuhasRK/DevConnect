@@ -22,6 +22,10 @@ export class LoginComponent {
   })
 
   onSubmit() {
-    this.userService.findUserByEmail(this.loginForm.value.email || '', this.loginForm.value.password || '');
+    this.userService.findUserByEmail(this.loginForm.value).subscribe((res : any)=>{
+      console.log(res.data);
+      sessionStorage.setItem('token',res.token.toString());
+      sessionStorage.setItem('id',res.data);
+    })
   }
 }

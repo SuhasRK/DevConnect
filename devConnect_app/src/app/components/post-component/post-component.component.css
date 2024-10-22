@@ -1,0 +1,23 @@
+.custom-display {
+    border: 1px solid black;
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 8px;
+    background-color: #1f2937;
+    color: white;
+  }
+  
+  h2 {
+    margin-bottom: 8px;
+  }
+/*   
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  pre {
+    background: #f4f4f4;
+    padding: 10px;
+    overflow: auto;
+  } */

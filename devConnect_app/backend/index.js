@@ -18,7 +18,7 @@ app.use(cors()) // Use this after the variable declaration
 
 const URL = process.env.DATABASE_URL;
 
-mongoose.connect(URL).then(()=>{
+mongoose.connect(URL).then((client)=>{
     console.log('Connection successful!!!');
 })
 .catch((err)=>{

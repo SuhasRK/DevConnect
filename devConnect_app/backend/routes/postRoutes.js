@@ -19,10 +19,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-router.post('/uploadPost', upload.fields([{ name: 'image' }, { name: 'file' }]), (req, res) => {
+router.post('/uploadPost',(req, res) => {
     const { title, mainData,userId } = req.body;
-    const image = req.files['image']? req.files['image'][0] : {} ;
-    const file = req.files['file']? req.files['file'][0] : {};
+    // const image = req.files['image']? req.files['image'][0] : {} ;
+    // const file = req.files['file']? req.files['file'][0] : {};
 
     // console.log(image);
     // console.log(file);
@@ -31,13 +31,11 @@ router.post('/uploadPost', upload.fields([{ name: 'image' }, { name: 'file' }]),
         title,
         mainData,
         userId,
-        imagePath: image.path ? image.path : "", // Save the image path
-        filePath: file.path ? file.path : "", // Save the file path
         likeCount : 0,
     });
 
     newPost.save()
-    .then(() => res.send('Files uploaded and data saved successfully!'))
+    .then(() => res.send({message: 'success'}))
     .catch(err => res.status(500).send('Error saving data: ' + err));
   
 });

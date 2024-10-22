@@ -5,52 +5,86 @@
     - @tailwindcss/forms
 -->
 <div class="parent">
-    <div class="m-5">
-        <label for="OrderNotes" class="sr-only">Order notes</label>
-      
-        <div
-          class="overflow-hidden rounded-lg border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 dark:border-gray-700"
-        >
-          <textarea
-            id="OrderNotes"
-            class="w-full resize-none border-none align-top focus:ring-0 sm:text-sm dark:bg-gray-800 dark:text-white p-2"
-            rows="4"
-            placeholder="New Post"
-          ></textarea>
-      
-          <div class="flex justify-between dark:bg-gray-800">
-            <div class="flex items-center justify-end gap-2 bg-white p-3 dark:bg-gray-800">
-                <button
-                  type="button"
-                  class="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:text-gray-100"
-                >
-                <i class="fa-solid fa-camera"></i>
-                </button>
-    
-                <button
-                  type="button"
-                  class="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:text-gray-100"
-                >
-                <i class="fa-solid fa-file-code"></i>
-                </button>
-              </div>
-        
-              <div class="flex items-center justify-start gap-2 bg-white p-3 dark:bg-gray-800">
-                <button
-                  type="button"
-                  class="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:text-gray-100"
-                >
-                  Clear
-                </button>
-          
-                <button
-                  type="button"
-                  class="rounded bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
-                >
-                  Post
-                </button>
-              </div>
-          </div>
+  <div class="m-5">
+    <label for="OrderNotes" class="sr-only">Order notes</label>
+
+    <div
+      class="overflow-hidden rounded-lg border border-gray-200 shadow-sm focus-within:border-blue-600 focus-within:ring-1 focus-within:ring-blue-600 dark:border-gray-700">
+      <form [formGroup]="postform" (ngSubmit)="onSubmit()">
+        <textarea
+        class="w-full resize-none border-none align-top focus:ring-0 sm:text-sm dark:bg-gray-800 dark:text-white p-2 mb-2"
+        rows="1" placeholder="Title" formControlName="title"></textarea>
+      <textarea
+        class="w-full resize-none border-none align-top focus:ring-0 sm:text-sm dark:bg-gray-800 dark:text-white p-2"
+        rows="4" placeholder="New Post" formControlName="mainData"></textarea>
+
+      <div class="flex justify-between dark:bg-gray-800">
+        <div class="flex items-center justify-end gap-2 bg-white p-3 dark:bg-gray-800">
+          <button type="button"
+            class="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:text-gray-100">
+            <i class="fa-solid fa-camera"></i>
+          </button>
+
+          <button type="button"
+            class="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:text-gray-100">
+            <i class="fa-solid fa-file-code"></i>
+          </button>
+        </div>
+
+        <div class="flex items-center justify-start gap-2 bg-white p-3 dark:bg-gray-800">
+          <button type="button" (click)="clearForm()"
+            class="rounded bg-gray-200 px-3 py-1.5 text-sm font-medium text-gray-700 hover:text-gray-600 dark:bg-gray-700 dark:text-gray-200 dark:hover:text-gray-100">
+            Clear
+          </button>
+
+          <button type="submit" [disabled]="postform.invalid"
+            class="rounded bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700">
+            Post
+          </button>
         </div>
       </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="badge">
+    <!-- Solid -->
+
+    <span class="inline-flex items-center justify-center rounded-full border border-white-500 px-2.5 py-0.5 text-white">
+
+
+      <p class="whitespace-nowrap text-sm">All Posts</p>
+    </span>
+
+    <!-- Outlined -->
+
+    <span class="inline-flex items-center justify-center rounded-full border border-white-500 px-2.5 py-0.5 text-white">
+
+
+      <p class="whitespace-nowrap text-sm">Trending</p>
+    </span>
+
+    <span class="inline-flex items-center justify-center rounded-full border border-white-500 px-2.5 py-0.5 text-white">
+
+
+      <p class="whitespace-nowrap text-sm">Groups</p>
+    </span>
+  </div>
+
+
+  <div *ngIf="loading; else content">
+    <p>Loading...</p>
+  </div>
+
+  <ng-template #content>
+    <div *ngIf="error; else dataDisplay">
+      <p style="color: white;">Error fetching data. Please try again later.</p>
+    </div>
+    
+    <ng-template #dataDisplay>
+      <app-post-component *ngFor="let post of allPosts" title={{post.title}} text={{post.mainData}}></app-post-component>
+    </ng-template>
+  </ng-template>
+  
+
 </div>

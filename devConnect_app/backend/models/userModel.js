@@ -2,10 +2,10 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const userSchema = new mongoose.Schema({
-    firstName: {type: String, required : true, unique : true},
+    firstName: {type: String, required : true},
     lastName: {type: String, required : true},
     email : {type: String, required : true, unique : true},
-    userName : {type: String, required : true, unique : true},
+    userName : {type: String, required : true},
     password : {type: String, required : true},
     
 },{ timestamps: true });
@@ -25,8 +25,8 @@ userSchema.pre('save', async function (next) {
   });
   
 // Compare the given password with the hashed password in the database
-userSchema.methods.comparePassword = async function (password) {
-    return bcrypt.compare(password, this.password);
+userSchema.methods.comparePassword = async function (givenPass) {
+    return bcrypt.compare(givenPass, this.password);
 };
 
 module.exports = mongoose.model ('User',userSchema);
