@@ -22,12 +22,14 @@
             </div>
 
             <div class="flex items-center gap-4">
-                <button
+                <button (click)="createGroupClick()"
                     class="inline-flex items-center justify-center gap-1.5 rounded border border-gray-200 bg-white px-5 py-3 text-gray-900 transition hover:text-gray-700 focus:outline-none focus:ring dark:border-gray-800 dark:bg-gray-900 dark:text-white dark:hover:text-gray-200"
-                    type="button" disabled title="Coming soon!!!">
-                    <span class="text-sm font-medium"> Hackathons </span>
+                    type="button">
+                    <span class="text-sm font-medium"> Create Group </span>
 
-                    <i class="fa-solid fa-laptop"></i>
+                    <i class="fa-solid fa-group-arrows-rotate"></i>
+
+                    
                 </button>
 
                 <button
@@ -38,4 +40,6 @@
             </div>
         </div>
     </div>
+
+    <app-create-group></app-create-group>
 </header>
