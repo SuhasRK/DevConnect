@@ -5,25 +5,50 @@
           <p class="font-medium sm:text-lg">Create new group</p>
         </div>
       
-        <p class="mt-4 text-gray-500">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea quo unde vel adipisci
-          blanditiis voluptates eum. Nam, cum minima?
-        </p>
+          <form [formGroup]="groupForm" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8" (ngSubmit)="onSubmit()">      
+            <div>
+              <label for="groupName" class="sr-only">Email</label>
       
-        <div class="mt-6 sm:flex sm:gap-4">
-          <button
-            class="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
-          >
-            Create Group
-          </button>
+              <div class="relative">
+                <input
+                  type="text"
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm textColor"
+                  placeholder="Enter group name"
+                  formControlName="groupName"
+                />
       
-          <button (click)="clickCancel()"
+              </div>
+            </div>
+      
+            <div>
+              <label for="description" class="sr-only">Password</label>
+      
+              <div class="relative">
+                <input
+                  type="text"
+                  class="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm textColor"
+                  placeholder="Enter description"
+                  formControlName="description"
+                />
+              </div>
+            </div>
+            <div class="mt-6 sm:flex sm:gap-4">
+              <button type="submit"
+                class="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
+              >
+                Create Group
+              </button>
           
-            class="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
-          >
-            Cancel
-          </button>
-        </div>
+              <button (click)="clickCancel()"
+              
+                class="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring"
+              >
+                Cancel
+              </button>
+            </div>
+          </form>
+      
+        
       </div>
 </div>
 

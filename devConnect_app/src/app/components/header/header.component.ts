@@ -1,5 +1,6 @@
 import { Component , ViewChild} from '@angular/core';
 import { CreateGroupComponent } from '../create-group/create-group.component';
+import { GroupService } from '../../services/group-service.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,12 @@ import { CreateGroupComponent } from '../create-group/create-group.component';
 })
 export class HeaderComponent {
 
+  constructor(private groupService : GroupService) {
+
+  }
+
   @ViewChild(CreateGroupComponent)
-  child: CreateGroupComponent = new CreateGroupComponent;
+  child: CreateGroupComponent = new CreateGroupComponent(this.groupService);
 
   createGroupClick(){
     this.child.toggleShow();

@@ -8,6 +8,7 @@ var cors = require('cors')
 const userRoutes  = require('./routes/userRoutes');
 const authRoutes = require('./routes/auth');
 const postRoutes = require('./routes/postRoutes');
+const groupRoutes = require('./routes/groupRoute')
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -26,6 +27,7 @@ mongoose.connect(URL).then((client)=>{
 })
 app.use('/auth',authRoutes);
 app.use('/users',userRoutes);
-app.use('/posts',postRoutes)
+app.use('/posts',postRoutes);
+app.use('/group',groupRoutes);
 
 app.listen(3000,() => console.log("Server listening at port 3000"));

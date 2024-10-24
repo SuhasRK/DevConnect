@@ -1,7 +1,7 @@
 .custom-display{
     border: 1px solid black;
     padding: 16px;
-    border-radius: 8px;
+    border-radius: 16px;
     background-color: #1f2937;
     color: white;
     margin: 15% auto; /* 15% from the top and centered */
@@ -19,5 +19,10 @@
     top: 0;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
+    background: rgba(16, 15, 15, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.textColor {
+    color: black;
 }
