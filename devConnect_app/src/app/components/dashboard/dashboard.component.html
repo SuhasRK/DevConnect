@@ -2,6 +2,8 @@
 <app-header></app-header>
 <div style="display: flex;flex: 1;">
   <app-side-nav class="sideNavClass"></app-side-nav>
-  <app-main-content class="mainCompClass"></app-main-content>
+  <app-main-content class="mainCompClass" *ngIf="displayFeed"></app-main-content>
+  <app-group-display class="mainCompClass" *ngIf="displayGroup"></app-group-display>
+  <app-bookmarks-display class="mainCompClass" *ngIf="displayBookmark"></app-bookmarks-display>
   <app-right-info class="rightInfoClass"></app-right-info>
 </div>

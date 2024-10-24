@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { TabManagement } from '../../services/tab-management.service';
 @Component({
   selector: 'app-side-nav',
   standalone: true,
@@ -9,6 +10,14 @@ import { CommonModule } from '@angular/common';
 })
 export class SideNavComponent implements OnInit{
 
+  feed :string  = "feed";
+  group :string  = "group";
+  bookmark :string  = "bookmark";
+
+  constructor(private tabManagement : TabManagement){
+
+  }
+
   userObject : any = {};
 
   userName : string = '';
@@ -17,5 +26,10 @@ export class SideNavComponent implements OnInit{
   ngOnInit(): void {
 
   }
+
+  sendTabName(tabName : string){
+    this.tabManagement.emitEvent(tabName);
+  }
+
 
 }
