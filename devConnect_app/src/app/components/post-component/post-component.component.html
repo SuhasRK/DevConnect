@@ -1,10 +1,25 @@
 <div class="custom-display">
-    <h1 class="text-2xl font-bold text-gray-900 sm:text-2xl dark:text-white">{{ title }}</h1>
-    <p>{{ text }}</p>
-    <!-- <img *ngIf="imageUrl" [src]="imageUrl" alt="Image" /> -->
-    
+    <div style="display: flex;justify-content: space-between;">
 
-    <!-- TODO - code to attach code file  -->
-    <!-- <h3>Code Snippet</h3>
-    <pre><code>{{ code }}</code></pre> -->
+        <div style="width: 85%;">
+            <h1 class="text-2xl font-bold text-gray-900 sm:text-2xl dark:text-white">{{ title }}</h1>
+            <p>{{ text }}</p>
+            <!-- <img *ngIf="imageUrl" [src]="imageUrl" alt="Image" /> -->
+            
+        
+            <!-- TODO - code to attach code file  -->
+            <!-- <h3>Code Snippet</h3>
+            <pre><code>{{ code }}</code></pre> -->
+        </div>
+
+        @if (showButton) {
+            <button
+            class="inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring" style="height: fit-content;margin-top: auto;margin-bottom: auto;"
+            type="button">
+            Join Group
+            </button>
+        }
+ 
+    
+    </div>
 </div>

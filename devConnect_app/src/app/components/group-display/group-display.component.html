@@ -1,1 +1,40 @@
-<p>group-display works!</p>
+<span class="flex items-center">
+    <span class="h-px flex-1 bg-white"></span>
+    <span class="shrink-0 px-6 font-bold" style="color: white;">My Groups</span>
+    <span class="h-px flex-1 bg-white"></span>
+</span>
+
+
+<div *ngIf="loading; else content">
+    <p>Loading...</p>
+</div>
+
+<ng-template #content>
+    <div *ngIf="error; else dataDisplay">
+      <p style="color: white;">Error fetching data. Please try again later.</p>
+    </div>
+    
+<ng-template #dataDisplay>
+    <app-post-component *ngFor="let group of groupsByAdmin" title={{group.groupName}} text={{group.description}}></app-post-component>
+</ng-template>
+</ng-template>
+
+<span class="flex items-center">
+    <span class="h-px flex-1 bg-white"></span>
+    <span class="shrink-0 px-6 font-bold" style="color: white;">All Groups</span>
+    <span class="h-px flex-1 bg-white"></span>
+</span>
+
+<div *ngIf="loading; else content">
+    <p>Loading...</p>
+</div>
+
+<ng-template #content>
+    <div *ngIf="error; else dataDisplay">
+      <p style="color: white;">Error fetching data. Please try again later.</p>
+    </div>
+    
+<ng-template #dataDisplay>
+    <app-post-component *ngFor="let group of allGroups" title={{group.groupName}} text={{group.description}} [showButton]="true"></app-post-component>
+</ng-template>
+</ng-template>

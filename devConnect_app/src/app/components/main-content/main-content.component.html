@@ -82,7 +82,7 @@
     </div>
     
     <ng-template #dataDisplay>
-      <app-post-component *ngFor="let post of allPosts" title={{post.title}} text={{post.mainData}}></app-post-component>
+      <app-post-component *ngFor="let post of allPosts" title={{post.title}} text={{post.mainData}} [showButton]="false"></app-post-component>
     </ng-template>
   </ng-template>
   

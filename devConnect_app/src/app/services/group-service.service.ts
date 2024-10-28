@@ -10,20 +10,21 @@ export class GroupService {
 
   constructor(private http: HttpClient) { }
 
-//   getAllPosts() {
-//     return this.http.get(environment.backendURL + '/posts/getAllPosts/');
-//   }
-
   createGroup(formValue : any) {
     let groupData = {
       groupName : formValue.groupName,
       description : formValue.description,
       adminId : sessionStorage.getItem('id'),
     }
-    console.log(groupData);
     return this.http.post(environment.backendURL+'/group/createGroup',groupData);
   }
 
-  
+  getAllGroups() {
+    return this.http.get(environment.backendURL+'/group/getGroups');
+  }
+
+  getGroupById(adminId : string) {
+    return this.http.get(environment.backendURL+'/group/getGroupById?adminId=' + adminId);
+  }
 
 }

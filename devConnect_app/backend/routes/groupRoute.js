@@ -18,4 +18,17 @@ router.post('/createGroup',(req, res) => {
   
 });
 
+router.get('/getGroups',(req,res)=>{
+    Group.find() // Fetch all documents from the Upload collection
+    .then(groups => res.json(groups)) // Send the uploads as a JSON response
+    .catch(err => res.status(500).send('Error retrieving data: ' + err)); // Handle errors
+})
+
+router.get('/getGroupById',(req,res)=>{
+    const {adminId} = req.query;
+    Group.find({adminId}) // Fetch all documents from the Upload collection
+      .then(groups => res.json(groups)) // Send the uploads as a JSON response
+      .catch(err => res.status(500).send('Error retrieving data: ' + err)); // Handle errors
+  })
+
 module.exports = router;

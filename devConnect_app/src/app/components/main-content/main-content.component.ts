@@ -4,7 +4,6 @@ import { PostService } from '../../services/post-service.service';
 import { CommonModule } from '@angular/common';
 import {FormGroup, FormControl, Validators} from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 
 
 @Component({
@@ -18,8 +17,6 @@ import { RouterModule, Routes } from '@angular/router';
   
 })
 export class MainContentComponent implements OnInit{
-
-  
 
   allPosts : any = [];
   loading : boolean = true;
