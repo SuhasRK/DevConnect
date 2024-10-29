@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { PostComponentComponent } from '../post-component/post-component.component';
 import { CommonModule } from '@angular/common';
 import { GroupService } from '../../services/group-service.service';
+import { TabManagement } from '../../services/tab-management.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-group-display',
@@ -17,7 +20,7 @@ export class GroupDisplayComponent implements OnInit{
   loading : boolean = true;
   error : boolean = false;
 
-  constructor(private groupService : GroupService){
+  constructor(private groupService : GroupService, private tabManagement : TabManagement, private router : Router){
 
   }
   ngOnInit(): void {
@@ -54,6 +57,10 @@ export class GroupDisplayComponent implements OnInit{
       this.loading = false;
     }
 
+  }
+
+  handleButtonClick(event : any) {
+    this.tabManagement.emitEvent("showGroupInfo"+"&"+event.id);
   }
 
 }

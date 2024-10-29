@@ -46,7 +46,6 @@ export class MainContentComponent implements OnInit{
   })
 
   onSubmit() {
-    // console.log(this.postform.value);
     this.postService.uploadPost(this.postform.value).subscribe((res : any)=>{
       if (res.message == 'success') {
         this.getAllPosts();

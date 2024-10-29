@@ -1,4 +1,4 @@
-import { Component,Input } from '@angular/core';
+import { Component,Input,Output,EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -14,4 +14,13 @@ export class PostComponentComponent {
   @Input() imageUrl: string | null = null;
   @Input() code: string = '';
   @Input() showButton: boolean = true;
+  @Input() buttonString: string = '';
+  @Input() id: string = '';
+
+  @Output() buttonClick = new EventEmitter<any>();
+
+  handleClick() {
+    // Perform any actions you need within the component
+    this.buttonClick.emit(this); // Emit the event to the parent component
+  }
 }

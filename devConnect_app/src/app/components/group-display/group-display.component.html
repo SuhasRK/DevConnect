@@ -5,17 +5,17 @@
 </span>
 
 
-<div *ngIf="loading; else content">
+<div *ngIf="loading; else content1">
     <p>Loading...</p>
 </div>
 
-<ng-template #content>
-    <div *ngIf="error; else dataDisplay">
+<ng-template #content1>
+    <div *ngIf="error; else dataDisplay1">
       <p style="color: white;">Error fetching data. Please try again later.</p>
     </div>
     
-<ng-template #dataDisplay>
-    <app-post-component *ngFor="let group of groupsByAdmin" title={{group.groupName}} text={{group.description}}></app-post-component>
+<ng-template #dataDisplay1>
+    <app-post-component *ngFor="let group of groupsByAdmin" id={{group._id}} title={{group.groupName}} text={{group.description}} buttonString="Show Posts" (buttonClick)="handleButtonClick($event)"></app-post-component>
 </ng-template>
 </ng-template>
 
@@ -35,6 +35,6 @@
     </div>
     
 <ng-template #dataDisplay>
-    <app-post-component *ngFor="let group of allGroups" title={{group.groupName}} text={{group.description}} [showButton]="true"></app-post-component>
+    <app-post-component *ngFor="let group of allGroups" id={{group._id}} title={{group.groupName}} text={{group.description}} buttonString="Join group" (buttonClick)="handleButtonClick($event)"></app-post-component>
 </ng-template>
 </ng-template>
